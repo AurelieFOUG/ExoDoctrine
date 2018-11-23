@@ -1,0 +1,41 @@
+{% extends '@App/base.html.twig' %}
+
+{% block contenu %}
+    <p></p>
+    <div>
+        <form action="{{ path('recherche') }}" method="get">
+            <label for="lbl_recherche">Recherche : </label>
+            <input name="recherche" type="text">
+            <input type="submit" value="Recherche">
+        </form>
+    </div>
+    
+
+    <div>
+        <a href="{{ path('livres_by_Genre', {'genre' : 'Policier'}) }}">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-secondary">Science Fiction</button>
+                </div>
+            </div>
+        </a>
+    </div>
+<p>
+
+</p>
+<h1>Les auteurs :</h1>
+    <div>
+{% for tableau in tableaux %}
+
+    <h1><a href="{{ path('author', {'id' : tableau.id}) }}">{{ tableau.nom }}</a></h1>
+
+    <p>{{ tableau.bornedat | date("d/m/y") }} - {{ tableau.deadat | date("d/m/y")}}</p>
+    <p><a href="{{ path('pays_auteur', {'id' : tableau.pays}) }}">{{tableau.pays}}</a></p>
+    <p>{{ tableau.biography}}</p>
+
+
+{% endfor %}
+    </div>
+
+
+{% endblock %}

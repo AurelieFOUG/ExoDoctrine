@@ -1,0 +1,15 @@
+{% extends '@App/base.html.twig' %}
+
+
+{% block contenu %}
+    <h1>Résultat de ma recherche :</h1>
+    <div>
+        {% for biography in biographyes %}
+
+            <p>{{ biography.nom }}</p>
+            <p>{{ biography.pays}}</p>
+            <p>{{ biography.biography }}</p>
+
+        {% endfor %}
+    </div>
+{% endblock %}
